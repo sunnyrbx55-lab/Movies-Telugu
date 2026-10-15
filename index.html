@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" data-t="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Movies Telugu</title>
+<meta name="description" content="Movies Telugu – discover movies">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e50914'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#0b0b0d;--card:#17171b;--tx:#f3f3f3;--mu:#9a9aa3;--ac:#e50914;--bd:#2a2a30}
+[data-t=light]{--bg:#f6f6f8;--card:#fff;--tx:#18181b;--mu:#5f6068;--bd:#ddd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--bd);padding:.6rem 1rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:.4rem;font-weight:700;font-size:1.15rem;color:var(--tx);text-decoration:none}.logo b{color:var(--ac)}
+.sw{position:relative;flex:1;min-width:180px}
+input,select,textarea,button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:.5rem .7rem}
+input,select,textarea{width:100%}textarea{min-height:70px}
+button{cursor:pointer;width:auto}button.p{background:var(--ac);border-color:var(--ac);color:#fff}button.d{border-color:var(--ac);color:var(--ac)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+#sug{position:absolute;left:0;right:0;top:100%;background:var(--card);border:1px solid var(--bd);border-radius:8px;z-index:6;display:none}
+#sug div{padding:.5rem .7rem;cursor:pointer}#sug div:hover{background:var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:1rem}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.5rem;margin-bottom:1rem}
+h2{margin:1.2rem 0 .6rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.8rem}
+.row{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.5rem}.row .card{flex:0 0 140px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden;cursor:pointer;text-align:left;padding:0}
+.card img,.ph{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--bd)}
+.card .m{padding:.4rem .5rem}.card small,.mu{color:var(--mu)}
+.sk{aspect-ratio:2/3;border-radius:10px;background:linear-gradient(90deg,var(--card),var(--bd),var(--card));background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.msg{padding:2rem 1rem;text-align:center;color:var(--mu)}
+.chip{display:inline-block;border:1px solid var(--bd);border-radius:99px;padding:.1rem .6rem;margin:.1rem;font-size:.85rem}
+dialog{width:min(640px,94vw);max-height:90vh;overflow:auto;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:1rem}
+dialog::backdrop{background:#000a}
+.dl{display:flex;justify-content:space-between;gap:.5rem;align-items:center;border:1px solid var(--bd);border-radius:8px;padding:.5rem;margin:.4rem 0}
+a.btn{background:var(--ac);color:#fff;padding:.4rem .8rem;border-radius:8px;text-decoration:none;white-space:nowrap}
+.stars button{font-size:1.4rem;padding:.1rem .4rem;border:0;background:none;color:var(--mu)}.stars button.on{color:#ffb400}
+.bar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+.banner{background:#b4530922;border:1px solid #b45309;border-radius:8px;padding:.6rem 1rem;margin-bottom:1rem}
+#toast{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);background:var(--ac);color:#fff;padding:.6rem 1rem;border-radius:8px;display:none;z-index:20;max-width:90vw}
+#mnt{position:fixed;inset:0;background:var(--bg);z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem}
+[hidden]{display:none!important}
+.tabs{display:flex;gap:.4rem;margin:.6rem 0}.tabs .on{background:var(--ac);color:#fff}
+.stat{display:inline-block;margin:.2rem .6rem .2rem 0;padding:.4rem .8rem;border:1px solid var(--bd);border-radius:8px}
+.ar{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;border-bottom:1px solid var(--bd);padding:.5rem 0}
+label{display:block;margin:.5rem 0 .15rem;font-size:.9rem;color:var(--mu)}
+footer{text-align:center;padding:1.5rem;color:var(--mu);font-size:.85rem}footer a{color:var(--mu)}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="./"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#e50914"/><path d="M12 9l11 7-11 7z" fill="#fff"/></svg>Movies <b>Telugu</b></a>
+  <div class="sw"><input id="q" type="search" placeholder="Search title, actor, director, year…" autocomplete="off" aria-label="Search movies"><div id="sug"></div></div>
+  <button data-a="theme" aria-label="Toggle light or dark theme">◐</button>
+  <button data-a="wlview" id="bwl" hidden>♥ Watchlist</button>
+  <button data-a="auth" id="bauth">Sign in</button>
+  <button data-a="admin" id="badm" class="p" hidden>Admin</button>
+</header>
+
+<div class="wrap">
+  <div id="banner"></div>
+  <section id="pub">
+    <div class="filters">
+      <select id="fg" aria-label="Genre"></select>
+      <select id="fl" aria-label="Language"></select>
+      <input id="fy" type="number" placeholder="Year" min="1900" max="2100" aria-label="Release year">
+      <select id="fs" aria-label="Sort"><option value="new">Newest added</option><option value="year">Release year</option><option value="rating">Top rated</option><option value="title">Title A–Z</option></select>
+      <button data-a="clear">Clear</button>
+    </div>
+    <div id="app"></div>
+  </section>
+  <section id="adm" hidden></section>
+</div>
+<footer>© Movies Telugu · Only content we own or are authorized to distribute · <a href="#" data-a="adminentry">Admin</a></footer>
+
+<dialog id="dlg"></dialog>
+<div id="mnt" hidden></div>
+<div id="toast" role="status"></div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,collection,query,where,orderBy,limit,startAfter,getDocs,getDoc,doc,setDoc,addDoc,updateDoc,deleteDoc,serverTimestamp,getCountFromServer} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+/* ===== 1. PASTE YOUR FIREBASE WEB CONFIG HERE (public by design; security = rules) ===== */
+const CFG={apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT_ID.firebaseapp.com",projectId:"YOUR_PROJECT_ID",appId:"YOUR_APP_ID"};
+const ok=!CFG.apiKey.startsWith("YOUR_");
+const GENRES=["Action","Adventure","Comedy","Drama","Romance","Thriller","Crime","Mystery","Horror","Science Fiction","Fantasy","Animation","Family","Musical","Documentary","Biography","History","War","Sports","Superhero","Mythology","Political"];
+const LANGS=["Telugu","Hindi","Tamil","Malayalam","Kannada","English","Other"];
+const PAGE=24;
+let app,auth,db;
+if(ok){app=initializeApp(CFG);auth=getAuth(app);db=getFirestore(app)}
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const https=u=>{try{return new URL(u).protocol==="https:"}catch{return false}};
+const okMF=u=>{try{const x=new URL(u);return x.protocol==="https:"&&/(^|\.)mediafire\.com$/.test(x.hostname)}catch{return false}};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.i);toast.i=setTimeout(()=>t.style.display="none",3500)};
+const modal=h=>{const d=$("#dlg");d.innerHTML=h;if(!d.open)d.showModal()};
+const closeM=()=>$("#dlg").open&&$("#dlg").close();
+const opts=(a,all)=>`<option value="">${all}</option>`+a.map(x=>`<option>${esc(x)}</option>`).join("");
+
+let M=[],last=null,more=false,U=null,ADM=false,WL=new Set(),maintOn=false;
+const F={q:"",g:"",l:"",y:"",s:"new",wl:false};
+
+/* theme */
+const th=localStorage.getItem("mt_theme");if(th)document.documentElement.dataset.t=th;
+$("#fg").innerHTML=opts(GENRES,"All genres");$("#fl").innerHTML=opts(LANGS,"All languages");
+
+/* ---------- public listing ---------- */
+async function load(reset){
+  if(!ok){$("#banner").innerHTML='<div class="banner">Firebase is not configured yet. Paste your web config into <code>CFG</code> in index.html (see setup steps). No movies can load until then.</div>';draw();return}
+  if(reset){M=[];last=null}
+  if(!M.length)$("#app").innerHTML='<div class="grid">'+'<div class="sk"></div>'.repeat(8)+'</div>';
+  try{
+    const c=[where("status","==","published"),orderBy("createdAt","desc")];
+    if(last)c.push(startAfter(last));
+    const s=await getDocs(query(collection(db,"movies"),...c,limit(PAGE)));
+    if(s.docs.length)last=s.docs[s.docs.length-1];
+    more=s.size===PAGE;
+    M.push(...s.docs.map(d=>({id:d.id,...d.data()})));
+  }catch(e){console.error(e);$("#app").innerHTML='<div class="msg">Couldn\'t load movies. Check your connection and try again.<br><button data-a="retry">Retry</button></div>';return}
+  draw();
+  const h=decodeURIComponent(location.hash.slice(1));
+  if(h&&!load.shared){load.shared=1;if(M.some(x=>x.id===h))open(h)}
+}
+const hay=m=>[m.title,m.altTitle,m.director,(m.cast||[]).join(" "),m.language,m.year,(m.genres||[]).join(" ")].join(" ").toLowerCase();
+const card=m=>`<button class="card" data-a="open" data-id="${esc(m.id)}">${https(m.poster)?`<img loading="lazy" decoding="async" src="${esc(m.poster)}" alt="${esc(m.title)} poster">`:'<div class="ph"></div>'}<div class="m"><b>${esc(m.title)}</b><br><small>${esc(m.year)} · ${esc(m.language)}</small></div></button>`;
+function draw(){
+  if(!M.length&&ok&&!maintOn){$("#app").innerHTML='<div class="msg">No movies published yet.</div>';return}
+  let r=M.filter(m=>(!F.q||hay(m).includes(F.q))&&(!F.g||(m.genres||[]).includes(F.g))&&(!F.l||m.language===F.l)&&(!F.y||String(m.year)===String(F.y))&&(!F.wl||WL.has(m.id)));
+  const S={new:0,year:(a,b)=>b.year-a.year,rating:(a,b)=>(b.ratingAvg||0)-(a.ratingAvg||0),title:(a,b)=>a.title.localeCompare(b.title)}[F.s];
+  if(S)r=[...r].sort(S);
+  const plain=!F.q&&!F.g&&!F.l&&!F.y&&!F.wl;
+  const feat=plain?M.filter(m=>m.featured):[];
+  $("#app").innerHTML=(feat.length?`<h2>Featured</h2><div class="row">${feat.map(card).join("")}</div>`:"")+
+    `<h2>${F.wl?"My watchlist":plain?"Latest additions":"Results"}</h2>`+
+    (r.length?`<div class="grid">${r.map(card).join("")}</div>`:'<div class="msg">No movies match. Try different words or clear the filters.</div>')+
+    (more&&!F.wl?'<div class="msg"><button data-a="more">Load more</button></div>':"");
+}
+
+/* ---------- details ---------- */
+function open(id){
+  const m=M.find(x=>x.id===id)||ADMLIST.find(x=>x.id===id);if(!m)return;
+  const dls=(m.downloads||[]).filter(d=>d.active!==false&&okMF(d.url));
+  modal(`<div class="bar"><button data-a="close">✕ Close</button></div>
+  ${https(m.poster)?`<img src="${esc(m.poster)}" alt="" style="width:140px;float:left;margin:0 1rem .5rem 0;border-radius:8px">`:""}
+  <h2 style="margin-top:0">${esc(m.title)}</h2>${m.altTitle?`<div class="mu">${esc(m.altTitle)}</div>`:""}
+  <p class="mu">${esc(m.year)} · ${esc(m.language)}${m.runtime?` · ${esc(m.runtime)} min`:""}</p>
+  <div>${(m.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>
+  <p>${esc(m.description)}</p>
+  ${m.director?`<p><b>Director:</b> ${esc(m.director)}</p>`:""}${(m.cast||[]).length?`<p><b>Cast:</b> ${esc(m.cast.join(", "))}</p>`:""}
+  <p class="mu">${m.ratingCount?`★ ${(+m.ratingAvg).toFixed(1)} (${esc(m.ratingCount)} ratings)`:"No ratings yet"}</p>
+  <div style="clear:both"></div>
+  ${https(m.trailer)?`<a class="btn" href="${esc(m.trailer)}" target="_blank" rel="noopener noreferrer">▶ Trailer ↗</a>`:""}
+  <h3>Downloads</h3>
+  ${dls.length?dls.map(d=>`<div class="dl"><span><b>${esc(d.label||"Download")}</b><br><small class="mu">${esc([d.language,d.quality,d.size].filter(Boolean).join(" · "))}</small></span><a class="btn" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">MediaFire ↗</a></div>`).join(""):'<p class="mu">No download links available.</p>'}
+  <p class="mu"><small>Links open MediaFire in a new tab. Availability is not checked automatically.</small></p>
+  <div class="stars" aria-label="Rate this movie">${[1,2,3,4,5].map(n=>`<button data-a="rate" data-id="${esc(m.id)}" data-n="${n}" aria-label="${n} stars">★</button>`).join("")}</div>
+  <div class="bar"><button data-a="wl" data-id="${esc(m.id)}">${WL.has(m.id)?"♥ In watchlist":"♡ Add to watchlist"}</button><button data-a="share" data-id="${esc(m.id)}">Share</button><button data-a="report" data-id="${esc(m.id)}">Report broken link</button></div>`);
+}
+const needLogin=()=>{if(U)return false;toast("Please sign in first.");authForm();return true};
+
+/* ---------- auth ---------- */
+function authForm(){
+  if(!ok){toast("Firebase is not configured yet.");return}
+  modal(`<div class="bar"><button data-a="close">✕ Close</button></div><h2>Sign in</h2>
+  <form id="af"><label>Email</label><input name="e" type="email" required autocomplete="email"><label>Password</label><input name="p" type="password" minlength="6" required autocomplete="current-password">
+  <div class="bar"><button class="p" data-m="in">Sign in</button><button data-m="up">Create account</button><button data-m="reset" formnovalidate>Forgot password</button></div></form>`);
+}
+document.addEventListener("submit",async e=>{
+  const f=e.target;e.preventDefault();
+  if(f.id==="af"){
+    const mode=e.submitter?.dataset.m,em=f.e.value,pw=f.p.value;
+    try{
+      if(mode==="reset"){await sendPasswordResetEmail(auth,em);toast("If the email exists, a reset link was sent.");return}
+      mode==="up"?await createUserWithEmailAndPassword(auth,em,pw):await signInWithEmailAndPassword(auth,em,pw);
+      closeM();
+    }catch(err){toast("Sign-in failed. Check your details and try again.")}
+  }
+  if(f.id==="mf")saveMovie(f,e.submitter);
+  if(f.id==="mtf")saveMaint(f);
+});
+
+/* ---------- user actions ---------- */
+async function rate(id,n){
+  if(needLogin())return;
+  try{await setDoc(doc(db,"userRatings",U.uid+"_"+id),{uid:U.uid,movieId:id,rating:+n,updatedAt:serverTimestamp()});toast("Rating saved ("+n+"★). Averages need the backend function.")}catch{toast("Couldn't save rating.")}
+}
+async function toggleWL(id){
+  if(needLogin())return;
+  WL.has(id)?WL.delete(id):WL.add(id);
+  try{await setDoc(doc(db,"watchlists",U.uid),{ids:[...WL]});open(id)}catch{toast("Couldn't update watchlist.")}
+}
+async function report(id){
+  if(needLogin())return;
+  try{await addDoc(collection(db,"reports"),{movieId:id,type:"broken-link",note:"",uid:U.uid,createdAt:serverTimestamp()});toast("Thanks! Report sent.")}catch{toast("Couldn't send report.")}
+}
+async function share(id){
+  const url=location.origin+location.pathname+"#"+id,m=M.find(x=>x.id===id);
+  try{navigator.share?await navigator.share({title:m.title,url}):(await navigator.clipboard.writeText(url),toast("Link copied"))}catch{}
+}
+
+/* ---------- maintenance ---------- */
+async function maint(){
+  if(!ok)return;
+  try{
+    const s=await getDoc(doc(db,"siteSettings","maintenance"));const d=s.data()||{};
+    maintOn=!!d.enabled&&!ADM;
+    $("#mnt").hidden=!maintOn;
+    if(maintOn)$("#mnt").innerHTML=`<h1>🎬 ${esc(d.title||"We'll be back soon")}</h1><p>${esc(d.message||"Movies Telugu is temporarily unavailable.")}</p><button data-a="auth">Admin login</button>`;
+    window.MD=d;
+  }catch{}
+}
+
+/* ---------- admin ---------- */
+let ADMLIST=[],tab="movies";
+const log=(a,t)=>addDoc(collection(db,"adminAuditLogs"),{uid:U.uid,action:a,target:t||"",at:serverTimestamp()}).catch(()=>{});
+const cnt=async s=>(await getCountFromServer(query(collection(db,"movies"),where("status","==",s)))).data().count;
+function showAdmin(on){$("#adm").hidden=!on;$("#pub").hidden=on;if(on)renderAdmin()}
+async function renderAdmin(){
+  const A=$("#adm");
+  A.innerHTML=`<div class="tabs">${["movies","reports","maintenance"].map(t=>`<button data-a="tab" data-id="${t}" class="${t===tab?"on":""}">${t}</button>`).join("")}<button data-a="admin-off">← Site</button></div><div id="atab">Loading…</div>`;
+  const T=$("#atab");
+  try{
+    if(tab==="movies"){
+      const [p,d,a]=await Promise.all([cnt("published"),cnt("draft"),cnt("archived")]);
+      const s=await getDocs(query(collection(db,"movies"),orderBy("updatedAt","desc"),limit(50)));
+      ADMLIST=s.docs.map(x=>({id:x.id,...x.data()}));
+      T.innerHTML=`<span class="stat">Published ${p}</span><span class="stat">Drafts ${d}</span><span class="stat">Archived ${a}</span><div class="bar"><button class="p" data-a="edit">+ Add movie</button></div>`+
+        (ADMLIST.map(m=>`<div class="ar"><span><b>${esc(m.title)}</b> <small class="mu">${esc(m.status)}</small></span><span class="bar" style="margin:0"><button data-a="open" data-id="${esc(m.id)}">Preview</button><button data-a="edit" data-id="${esc(m.id)}">Edit</button><button data-a="setst" data-id="${esc(m.id)}" data-s="${m.status==="published"?"draft":"published"}">${m.status==="published"?"Unpublish":"Publish"}</button><button data-a="setst" data-id="${esc(m.id)}" data-s="${m.status==="archived"?"draft":"archived"}">${m.status==="archived"?"Restore":"Archive"}</button><button class="d" data-a="del" data-id="${esc(m.id)}">Delete</button></span></div>`).join("")||'<div class="msg">No movies yet.</div>');
+    }else if(tab==="reports"){
+      const s=await getDocs(query(collection(db,"reports"),orderBy("createdAt","desc"),limit(30)));
+      T.innerHTML=s.empty?'<div class="msg">No reports.</div>':s.docs.map(x=>{const r=x.data();return`<div class="ar"><span>${esc(r.type)} · movie <code>${esc(r.movieId)}</code></span><span><button data-a="open" data-id="${esc(r.movieId)}">View</button> <button data-a="resolve" data-id="${x.id}">Resolve</button></span></div>`}).join("");
+    }else{
+      const d=window.MD||{};
+      T.innerHTML=`<form id="mtf"><label><input type="checkbox" name="on" style="width:auto" ${d.enabled?"checked":""}> Maintenance mode ON</label><label>Title</label><input name="t" value="${esc(d.title||"")}" maxlength="80"><label>Message</label><textarea name="m" maxlength="400">${esc(d.message||"")}</textarea><div class="bar"><button class="p">Save</button></div></form>`;
+    }
+  }catch(e){console.error(e);T.innerHTML='<div class="msg">Couldn\'t load admin data. You may need a Firestore index (see browser console link).</div>'}
+}
+async function saveMaint(f){
+  try{await setDoc(doc(db,"siteSettings","maintenance"),{enabled:f.on.checked,title:f.t.value.trim(),message:f.m.value.trim(),updatedAt:serverTimestamp(),updatedBy:U.uid});log("maintenance",f.on.checked?"on":"off");toast("Saved");window.MD={enabled:f.on.checked,title:f.t.value,message:f.m.value}}catch{toast("Save failed (admin only).")}
+}
+function editForm(id){
+  const m=ADMLIST.find(x=>x.id===id)||{};
+  const v=k=>esc(m[k]??"");
+  const dl=(m.downloads||[]).map(d=>[d.label,d.language,d.quality,d.size,d.url].join(" | ")).join("\n");
+  modal(`<div class="bar"><button data-a="close">✕ Close</button></div><h2>${id?"Edit":"Add"} movie</h2>
+  <form id="mf" data-id="${esc(id||"")}">
+  <label>Title *</label><input name="title" value="${v("title")}" required maxlength="150">
+  <label>Alternate title</label><input name="altTitle" value="${v("altTitle")}" maxlength="150">
+  <label>Release year *</label><input name="year" type="number" value="${v("year")}" required>
+  <label>Language</label><select name="language">${LANGS.map(l=>`<option ${m.language===l?"selected":""}>${l}</option>`).join("")}</select>
+  <label>Genres (comma separated)</label><input name="genres" value="${esc((m.genres||[]).join(", "))}">
+  <label>Director</label><input name="director" value="${v("director")}">
+  <label>Cast (comma separated)</label><input name="cast" value="${esc((m.cast||[]).join(", "))}">
+  <label>Runtime (min)</label><input name="runtime" type="number" value="${v("runtime")}">
+  <label>Poster URL (https)</label><input name="poster" value="${v("poster")}">
+  <label>Trailer URL (https)</label><input name="trailer" value="${v("trailer")}">
+  <label>Description</label><textarea name="description" maxlength="3000">${v("description")}</textarea>
+  <label>MediaFire links – one per line: label | language | quality | size | https://www.mediafire.com/…</label><textarea name="downloads">${esc(dl)}</textarea>
+  <label><input type="checkbox" name="featured" style="width:auto" ${m.featured?"checked":""}> Featured</label>
+  <label>Status</label><select name="status">${["draft","published","archived"].map(s=>`<option ${(m.status||"draft")===s?"selected":""}>${s}</option>`).join("")}</select>
+  <div class="bar"><button class="p">Save</button></div></form>`);
+}
+async function saveMovie(f,btn){
+  const v=n=>f.elements[n].value.trim(),list=n=>v(n).split(",").map(x=>x.trim()).filter(Boolean);
+  try{
+    const dl=v("downloads").split("\n").map(l=>l.trim()).filter(Boolean).map(l=>{const[label,language,quality,size,url]=l.split("|").map(x=>x.trim());if(!okMF(url))throw Error("Only https MediaFire links are allowed: "+(url||l));return{label,language,quality,size,url,active:true}});
+    if(!v("title"))throw Error("Title is required");
+    const year=+v("year");if(!(year>=1900&&year<=2100))throw Error("Enter a valid year");
+    for(const k of["poster","trailer"])if(v(k)&&!https(v(k)))throw Error(k+" must be an https URL");
+    const d={title:v("title"),altTitle:v("altTitle"),year,language:v("language"),genres:list("genres"),director:v("director"),cast:list("cast"),runtime:+v("runtime")||null,poster:v("poster"),trailer:v("trailer"),description:v("description"),downloads:dl,featured:f.elements.featured.checked,status:v("status"),updatedAt:serverTimestamp(),updatedBy:U.uid};
+    btn&&(btn.disabled=true);
+    const id=f.dataset.id;
+    if(id){await updateDoc(doc(db,"movies",id),d);log("update",id)}
+    else{const r=await addDoc(collection(db,"movies"),{...d,createdAt:serverTimestamp(),createdBy:U.uid});log("create",r.id)}
+    toast("Saved");closeM();renderAdmin();
+  }catch(e){toast(e.message||"Save failed.");btn&&(btn.disabled=false)}
+}
+
+/* ---------- events ---------- */
+const A={
+  open:id=>open(id),close:closeM,
+  theme:()=>{const t=document.documentElement.dataset.t==="dark"?"light":"dark";document.documentElement.dataset.t=t;localStorage.setItem("mt_theme",t)},
+  more:()=>load(),retry:()=>load(true),
+  clear:()=>{Object.assign(F,{q:"",g:"",l:"",y:"",s:"new",wl:false});$("#q").value=$("#fg").value=$("#fl").value=$("#fy").value="";$("#fs").value="new";draw()},
+  auth:async()=>{if(U){await signOut(auth);showAdmin(false);toast("Signed out")}else authForm()},
+  wlview:()=>{F.wl=!F.wl;draw()},
+  rate:(id,_,t)=>rate(id,t.dataset.n),wl:toggleWL,report,share,
+  admin:()=>{ADM?showAdmin(true):toast("Unauthorized: this account is not an administrator.")},
+  "admin-off":()=>showAdmin(false),
+  adminentry:e=>{U?A.admin():authForm()},
+  closepop:()=>{localStorage.setItem("mt_pop","1");closeM()},
+  tab:id=>{tab=id;renderAdmin()},
+  edit:id=>editForm(id),
+  setst:async(id,_,t)=>{try{await updateDoc(doc(db,"movies",id),{status:t.dataset.s,updatedAt:serverTimestamp(),updatedBy:U.uid});log("status:"+t.dataset.s,id);renderAdmin()}catch{toast("Failed (admin only).")}},
+  del:async id=>{if(!confirm("Permanently delete this movie? This cannot be undone."))return;try{await deleteDoc(doc(db,"movies",id));log("delete",id);renderAdmin()}catch{toast("Failed (admin only).")}},
+  resolve:async id=>{try{await deleteDoc(doc(db,"reports",id));log("resolve-report",id);renderAdmin()}catch{toast("Failed.")}}
+};
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-a]");
+  if(t){e.preventDefault();A[t.dataset.a]?.(t.dataset.id,e,t)}
+  if(!e.target.closest(".sw"))$("#sug").style.display="none";
+  if(e.target.closest("#sug div")){open(e.target.closest("#sug div").dataset.id);$("#sug").style.display="none"}
+});
+$("#q").addEventListener("input",e=>{
+  F.q=e.target.value.trim().toLowerCase();draw();
+  const s=F.q?M.filter(m=>hay(m).includes(F.q)).slice(0,6):[];
+  $("#sug").innerHTML=s.map(m=>`<div data-id="${esc(m.id)}">${esc(m.title)} <small class="mu">${esc(m.year)}</small></div>`).join("");
+  $("#sug").style.display=s.length?"block":"none";
+});
+$("#fg").onchange=e=>{F.g=e.target.value;draw()};$("#fl").onchange=e=>{F.l=e.target.value;draw()};
+$("#fy").oninput=e=>{F.y=e.target.value;draw()};$("#fs").onchange=e=>{F.s=e.target.value;draw()};
+addEventListener("offline",()=>toast("You're offline."));
+
+/* ---------- boot ---------- */
+if(ok){
+  onAuthStateChanged(auth,async u=>{
+    U=u;ADM=false;WL=new Set();
+    if(u){
+      try{ADM=(await getDoc(doc(db,"admins",u.uid))).exists()}catch{}
+      try{WL=new Set((await getDoc(doc(db,"watchlists",u.uid))).data()?.ids||[])}catch{}
+    }
+    $("#bauth").textContent=u?"Sign out":"Sign in";$("#badm").hidden=!ADM;$("#bwl").hidden=!u;
+    await maint();
+    if(!M.length&&!maintOn)load(true);
+  });
+  if(!localStorage.getItem("mt_pop")){
+    modal(`<h2>Welcome to Movies Telugu</h2><p class="mu">Browse freely. Administrators can sign in below.</p><div class="bar"><button class="p" data-a="auth">Admin Login</button><button data-a="closepop">Close Window</button></div>`);
+    $("#dlg").addEventListener("close",()=>localStorage.setItem("mt_pop","1"),{once:true});
+  }
+}else load(true);
+</script>
+</body>
+</html>
